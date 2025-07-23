@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Mixed Messages</title>
+    <link href="MixedMessages.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <label for="button"></label>
+    <br>
+    <input for="button" type="button" value="Get Joke" id="messageButton" />
+    <br>
+    <div id="jokeDisplay"></div>
+    <br>
+    <input type="text" id="suggestionBox" size="30" />
+    <br>
+    <label for="suggestion">Add your own!</label>
+    <br>
+    <input for="suggestion" type="button" value="Submit" id="submitButton" />
+    <script src="MixedMessages.js"></script>
+    <script>
+        // Start with jokes from the JS file
+        const jokes = getAllJokes();
+
+        document.getElementById('messageButton').addEventListener('click', function() {
+            getRandomJoke();
+        });
+
+        document.getElementById('submitButton').addEventListener('click', function() {
+            submitSuggestion();
+        });
+
+        function getRandomJoke() {
+            const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+            document.getElementById('jokeDisplay').innerText = randomJoke;
+        }
+
+        function submitSuggestion() {
+            const suggestion = document.getElementById('suggestionBox').value;
+            if (suggestion) {
+                jokes.push(suggestion); // Add the suggestion to the jokes array
+                alert("Thank you for your suggestion: " + suggestion);
+                document.getElementById('suggestionBox').value = '';
+            } else {
+                alert("Please enter a suggestion before submitting.");
+            }
+        }
+    </script>
+</body>
+</html>
