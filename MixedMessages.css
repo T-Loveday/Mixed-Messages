@@ -63,5 +63,6 @@ input[type="button"]:hover {
 /* Labels */
 label {
     font-weight: bold;
-    margin-bottom:
+    margin-bottom: 8px;
+    display: block;
 }
